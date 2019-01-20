@@ -7,6 +7,8 @@ extern crate rusty_leveldb;
 extern crate structopt;
 #[macro_use]
 extern crate structopt_derive;
+#[macro_use]
+extern crate log;
 extern crate println_logger;
 
 use std::net::{UdpSocket, SocketAddr};
@@ -66,7 +68,10 @@ impl Network for MyNetwork {
     }
     fn recv_from(&self, buf: &mut [u8]) -> BoxResult<(usize, ReceiveResult<Self::ClientId>)> {
         let (amt, src) = self.s.recv_from(buf)?;
+        info!("  receive from {} ({} bytes)", src, amt);
         if src == self.upstream {
+            Ok((amt, ReceiveResult::FromUpstream))
+        } else if src.port() == 5353 {
             Ok((amt, ReceiveResult::FromUpstream))
         } else {
             Ok((amt, ReceiveResult::FromClient(src)))
