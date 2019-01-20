@@ -5,7 +5,6 @@ extern crate serde_cbor;
 extern crate serde_bytes;
 extern crate rusty_leveldb;
 extern crate structopt;
-#[macro_use]
 extern crate structopt_derive;
 #[macro_use]
 extern crate log;
