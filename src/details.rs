@@ -580,7 +580,7 @@ impl<DB: Database, N: Network> DnsCache<DB, N> {
             }
 
             let dom = q.qname.to_string();
-            print!("{:?}\t{}", q.qtype, dom);
+            info!("{:?}\t{}", q.qtype, dom);
             let sq = SimplifiedQuestion {
                 dom,
                 a4: q.qtype == A || q.qtype == QTAll,
