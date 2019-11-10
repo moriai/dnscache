@@ -19,7 +19,7 @@ log = "0.4"
 serde_cbor = { version = "0.8", optional=true }
 structopt = {version="0.2", optional=true}
 structopt-derive = {version="0.2", optional=true}
-rusty-leveldb = { version = "^0.2.3", optional=true }
+rusty-leveldb = { version = "^0.2.5", optional=true }
 println_logger = {version="0.2", optional=true}
 
 [features]
